@@ -12,7 +12,9 @@
 	<artifactId>filmorate</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>filmorate</name>
-	<description>Technical task 9</description>
+	<description>
+		The filmorate application is designed for convenient rating of films. Only the best for our users!
+	</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -33,6 +35,18 @@
 			<artifactId>lombok</artifactId>
 			<version>1.18.26</version>
 			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.2.3.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.el</artifactId>
+			<version>3.0.0</version>
 		</dependency>
 	</dependencies>
 

@@ -18,7 +18,8 @@ public class FilmController {
 
     @PostMapping()
     public Film create(@RequestBody @Valid Film film) {
-        if(film.getReleaseDate().isBefore(LocalDate.of(1895,12,28))) {
+        if(film.getReleaseDate() != null && film.getReleaseDate().isBefore(LocalDate.of(1895,12,
+                28))) {
             log.warn("Фильм не может быть выпущен раньше дня рождения кино!");
             throw new RuntimeException("Фильм не может быть выпущен раньше дня рождения кино!");
         }

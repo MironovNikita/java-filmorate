@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.validation.constraints.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Data
 public class Film {
@@ -15,4 +16,5 @@ public class Film {
     private LocalDate releaseDate;
     @Positive
     private double duration;
+    Set<Long> likes;
 }

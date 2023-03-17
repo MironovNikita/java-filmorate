@@ -6,10 +6,8 @@ import ru.yandex.practicum.filmorate.exception.ObjectNotFoundException;
 import ru.yandex.practicum.filmorate.model.User;
 import ru.yandex.practicum.filmorate.storage.UserStorage;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,7 +45,7 @@ public class UserService {
         return userStorage.getById(userId);
     }
 
-    private void checkUserFriendList(User user) {
+    public void checkUserFriendList(User user) {
         if(user.getFriends() == null) {
             user.setFriends(new HashSet<Long>());
         }

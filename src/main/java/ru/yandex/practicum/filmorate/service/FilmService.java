@@ -8,7 +8,6 @@ import ru.yandex.practicum.filmorate.model.User;
 import ru.yandex.practicum.filmorate.storage.FilmStorage;
 import ru.yandex.practicum.filmorate.storage.UserStorage;
 
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,7 +18,7 @@ public class FilmService {
     private final FilmStorage filmStorage;
     private final UserStorage userStorage;
 
-    private void checkFilmLikesList(Film film) {
+    public void checkFilmLikesList(Film film) {
         if(film.getLikes() == null) {
             film.setLikes(new HashSet<Long>());
         }
@@ -28,10 +27,10 @@ public class FilmService {
         Film film = filmStorage.getById(filmId);
         User user = userStorage.getById(userId);
         if(film == null) {
-            throw new ObjectNotFoundException("Фильм ", filmId);
+            throw new ObjectNotFoundException("Фильм", filmId);
         }
         if(user == null) {
-            throw new ObjectNotFoundException("Пользователь ", userId);
+            throw new ObjectNotFoundException("Пользователь", userId);
         }
         checkFilmLikesList(film);
         film.getLikes().add(userId);
@@ -42,10 +41,10 @@ public class FilmService {
         Film film = filmStorage.getById(filmId);
         User user = userStorage.getById(userId);
         if(film == null) {
-            throw new ObjectNotFoundException("Фильм ", filmId);
+            throw new ObjectNotFoundException("Фильм", filmId);
         }
         if(user == null) {
-            throw new ObjectNotFoundException("Пользователь ", userId);
+            throw new ObjectNotFoundException("Пользователь", userId);
         }
         checkFilmLikesList(film);
         film.getLikes().remove(userId);

@@ -40,7 +40,7 @@ public class ExceptionsHandler {
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String, String> handleEmptyObject(Exception exception) {
+    public Map<String, String> handleEmptyObject(EmptyObjectException exception) {
         log.error("404 - Передаваемый объект пуст", exception);
         return Map.of("Переданный объект пуст", exception.getMessage());
     }

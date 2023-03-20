@@ -4,9 +4,12 @@ import lombok.Data;
 
 import javax.validation.constraints.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Data
 public class User {
+    @NotNull
+    @PositiveOrZero
     private long id;
     @Email
     @NotBlank(message = "Email не может быть null")
@@ -19,4 +22,8 @@ public class User {
     private String name;
     @PastOrPresent
     private LocalDate birthday;
+    Set<Long> friends;
+    @NotNull
+    @PositiveOrZero
+    int friendsNumber = 0;
 }

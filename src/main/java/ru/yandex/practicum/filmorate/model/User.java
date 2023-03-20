@@ -9,6 +9,7 @@ import java.util.Set;
 @Data
 public class User {
     @NotNull
+    @PositiveOrZero
     private long id;
     @Email
     @NotBlank(message = "Email не может быть null")
@@ -23,5 +24,6 @@ public class User {
     private LocalDate birthday;
     Set<Long> friends;
     @NotNull
-    int friendsNumber;
+    @PositiveOrZero
+    int friendsNumber = 0;
 }

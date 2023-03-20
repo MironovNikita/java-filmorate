@@ -13,12 +13,14 @@ import java.util.Map;
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class ExceptionsHandler {
     @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> handleIncorrectDate(DateValidationException exception) {
         log.warn("400 - Некорректная дата обрабатываемого объекта", exception);
         return Map.of(exception.getDescription(), exception.getMessage());
     }
 
     @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> handleIncorrectPathData(IncorrectPathDataException exception) {
         log.error("400 - Обнаружены некорректные данные в запросе", exception);
         return Map.of(exception.getDescription(), exception.getMessage());

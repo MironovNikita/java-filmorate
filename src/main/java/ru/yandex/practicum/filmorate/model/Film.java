@@ -10,7 +10,7 @@ import java.util.Set;
 public class Film {
     @NotNull
     @PositiveOrZero
-    private long id;
+    private Long id = 0L;
     @NotBlank(message = "Название фильма не может быть null")
     private String name;
     @Size(max = 200)
@@ -18,8 +18,8 @@ public class Film {
     private LocalDate releaseDate;
     @Positive
     private double duration;
-    Set<Long> likes;
+    private Set<Long> likes;
     @NotNull
     @PositiveOrZero
-    private int rating = 0;
+    private Integer rating = 0;
 }

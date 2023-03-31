@@ -23,7 +23,7 @@
 
 ## App database diagram
 
-![Filmorate database scheme](https://github.com/Filmorate-database-scheme.png)
+![[Filmorate database scheme](https://github.com/MironovNikita/java-filmorate/blob/main/Filmorate%20database%20scheme.png?raw=true)
 
 I make this project while studying at Yandex Practicum on the Java Developer course. This project will allow users to make their own top movies, mark their favorite movies, add other users as friends, and also share their favorite movies with them!
 

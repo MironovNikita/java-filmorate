@@ -21,7 +21,7 @@ public class GenreController {
     private final GenreService genreService;
 
     @GetMapping("/{id}")
-    public Genre getById(@PathVariable ("id") Optional<Integer> genreId) {
+    public Genre getById(@PathVariable("id") Optional<Integer> genreId) {
         if (genreId.isPresent()) {
             int correctId = genreId.get();
             log.info("Выполнение команды контроллера на получение жанра фильма с id '{}'", correctId);

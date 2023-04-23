@@ -18,7 +18,7 @@ public class MpaController {
     private final MpaService mpaService;
 
     @GetMapping("/{id}")
-    public Mpa getMpa(@PathVariable ("id") Optional<Integer> mpaId) {
+    public Mpa getMpa(@PathVariable("id") Optional<Integer> mpaId) {
         if (mpaId.isPresent()) {
             int correctId = mpaId.get();
             log.info("Выполнение команды контроллера на получение рейтинга фильма по id '{}'", correctId);

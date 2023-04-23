@@ -227,6 +227,6 @@ public class UserDbStorageTest {
                 "test@yandex.ru",
                 "Login",
                 "Name",
-                LocalDate.of(1990,10,10));
+                LocalDate.of(1990, 10, 10));
     }
 }

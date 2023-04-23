@@ -17,7 +17,7 @@ public class GenreService {
 
     public Genre getById(int id) {
         Genre genre = genreStorage.getById(id);
-        if(genre == null) {
+        if (genre == null) {
             log.warn("Команда сервиса на запрос жанра по id '{}' не выполнена. Жанр не найден", id);
             throw new ObjectNotFoundException("Жанр", id);
         }

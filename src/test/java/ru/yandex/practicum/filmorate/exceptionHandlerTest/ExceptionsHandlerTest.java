@@ -42,7 +42,7 @@ public class ExceptionsHandlerTest {
                 1L,
                 "Fast and Furious",
                 "The Fast and the Furious",
-                LocalDate.of(2000,6,18),
+                LocalDate.of(2000, 6, 18),
                 106,
                 new Mpa(3, "PG-13"),
                 Collections.emptyList()
@@ -52,7 +52,7 @@ public class ExceptionsHandlerTest {
     @DisplayName("Проверка исключения DateValidation")
     @Test
     void dateValidationExceptionTest() throws Exception {
-        FilmDao filmDao = createFilmDao().withReleaseDate(LocalDate.of(1000,1,1));
+        FilmDao filmDao = createFilmDao().withReleaseDate(LocalDate.of(1000, 1, 1));
         String json = objectMapper.writeValueAsString(filmDao);
 
         DateValidationException exception = new DateValidationException("Дата выпуска фильма не должна быть до 1895-12-28");

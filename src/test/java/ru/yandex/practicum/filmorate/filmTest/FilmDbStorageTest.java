@@ -210,7 +210,7 @@ public class FilmDbStorageTest {
                 id,
                 "Fast and Furious",
                 "The Fast and the Furious",
-                LocalDate.of(2000,6,18),
+                LocalDate.of(2000, 6, 18),
                 106,
                 new Mpa(3, "PG-13"),
                 Collections.emptyList());
@@ -222,7 +222,7 @@ public class FilmDbStorageTest {
                 "test@yandex.ru",
                 "Login",
                 "Name",
-                LocalDate.of(1990,10,10));
+                LocalDate.of(1990, 10, 10));
     }
 }
 

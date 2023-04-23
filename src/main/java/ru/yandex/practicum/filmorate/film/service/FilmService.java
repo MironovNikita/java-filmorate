@@ -116,7 +116,7 @@ public class FilmService {
             throw new ObjectNotFoundException("Пользователь", userId);
         }
         log.info("Команда сервиса на постановку лайка фильму с id '{}' от пользователя с id '{}' была успешно" +
-                        "выполнена", filmId, userId);
+                "выполнена", filmId, userId);
         filmStorage.likeFilm(filmId, userId);
     }
 

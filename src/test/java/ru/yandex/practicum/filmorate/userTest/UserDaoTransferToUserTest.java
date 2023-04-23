@@ -20,7 +20,7 @@ public class UserDaoTransferToUserTest {
                 "email@yandex.ru",
                 "login",
                 "name",
-                LocalDate.of(2000,10,10)
+                LocalDate.of(2000, 10, 10)
         );
 
         User user = userDaoTransformToUser.transformFrom(userDao);
@@ -40,7 +40,7 @@ public class UserDaoTransferToUserTest {
                 "testemail@yandex.ru",
                 "login",
                 null,
-                LocalDate.of(2000,10,10)
+                LocalDate.of(2000, 10, 10)
         );
 
         User user = userDaoTransformToUser.transformFrom(userDao);

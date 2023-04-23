@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @Repository("filmDbStorage")
 @RequiredArgsConstructor
-public class FilmDbStorage implements FilmStorage{
+public class FilmDbStorage implements FilmStorage {
     private final JdbcTemplate jdbcTemplate;
     private final GenreStorage genreStorage;
 

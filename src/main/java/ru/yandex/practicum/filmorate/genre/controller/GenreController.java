@@ -22,7 +22,7 @@ public class GenreController {
 
     @GetMapping("/{id}")
     public Genre getById(@PathVariable ("id") Optional<Integer> genreId) {
-        if(genreId.isPresent()) {
+        if (genreId.isPresent()) {
             int correctId = genreId.get();
             log.info("Выполнение команды контроллера на получение жанра фильма с id '{}'", correctId);
             return genreService.getById(correctId);

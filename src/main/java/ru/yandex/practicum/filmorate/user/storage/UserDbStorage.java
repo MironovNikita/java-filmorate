@@ -76,7 +76,7 @@ public class UserDbStorage implements UserStorage {
     @Override
     public User delete(long id) {
         User userToDelete = getById(id);
-        if(userToDelete == null) {
+        if (userToDelete == null) {
             log.info("Запрос на удаление пользователя не выполнен. Пользователь с id '{}' отсутствует", id);
             return null;
         }

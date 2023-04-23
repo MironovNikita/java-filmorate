@@ -43,7 +43,7 @@ public class UserController {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public User getUser(@PathVariable Optional<Long> id) {
-        if(id.isPresent()) {
+        if (id.isPresent()) {
             long correctId = id.get();
             log.info("Выполнение команды контроллера на получение пользователя по id '{}'", correctId);
             return userService.getById(correctId);
@@ -56,7 +56,7 @@ public class UserController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public User deleteUser(@PathVariable Optional<Long> id) {
-        if(id.isPresent()) {
+        if (id.isPresent()) {
             long correctId = id.get();
             log.info("Выполнение команды контроллера на удаление пользователя по id '{}'", correctId);
             return userService.delete(correctId);
@@ -69,7 +69,7 @@ public class UserController {
     @PutMapping("/{id}/friends/{friendId}")
     @ResponseStatus(HttpStatus.OK)
     public void addFriend(@PathVariable("id") Optional<Long> userId, @PathVariable Optional<Long> friendId) {
-        if(userId.isPresent() && friendId.isPresent()) {
+        if (userId.isPresent() && friendId.isPresent()) {
             long correctFriendId = friendId.get();
             long correctUserId = userId.get();
             log.info("Выполнение команды контроллера на добавление в друзья пользователей с id '{}' и '{}'",
@@ -99,7 +99,7 @@ public class UserController {
     @GetMapping("/{id}/friends")
     @ResponseStatus(HttpStatus.OK)
     public List<User> getFriendsOfUser(@PathVariable("id") Optional<Long> userId) {
-        if(userId.isPresent()) {
+        if (userId.isPresent()) {
             long correctId = userId.get();
             log.info("Выполнение команды контроллера на получение списка друзей пользователя с id '{}'", correctId);
             return userService.getFriends(correctId);
@@ -113,7 +113,7 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public List<User> getCommonFriendsOfTwoUsers(@PathVariable("id") Optional<Long> userId,
                                                  @PathVariable("otherId") Optional<Long> otherUserId) {
-        if(userId.isPresent() && otherUserId.isPresent()) {
+        if (userId.isPresent() && otherUserId.isPresent()) {
             long correctOtherId = otherUserId.get();
             long correctUserId = userId.get();
             log.info("Выполнение команды контроллера на получение общих друзей пользователей с id '{}' и '{}'",

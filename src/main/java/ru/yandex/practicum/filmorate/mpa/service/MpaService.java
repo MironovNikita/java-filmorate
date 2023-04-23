@@ -17,7 +17,7 @@ public class MpaService {
 
     public Mpa getById(int id) {
         Mpa mpa = mpaStorage.getById(id);
-        if(mpa == null) {
+        if (mpa == null) {
             log.warn("Команда сервиса жанров фильмов не выполнена. Жанр с id '{}' не найден", id);
             throw new ObjectNotFoundException("Жанр", id);
         }

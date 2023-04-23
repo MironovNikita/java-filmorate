@@ -30,7 +30,7 @@ public class UserService {
 
     public User create(UserDao userDao) {
         User user = userDaoToUserTransformer.transformFrom(userDao);
-        if(emailExists(user.getEmail())) {
+        if (emailExists(user.getEmail())) {
             log.error("Ошибка! Пользователь с email '{}' уже существует!", user.getEmail());
             throw new RuntimeException("Ошибка! Пользователь с таким email уже существует!");
         }
@@ -40,13 +40,13 @@ public class UserService {
 
     public User update(UserDao userDao) {
         User userExistCheck = userStorage.getById(userDao.getId());
-        if(userExistCheck == null) {
+        if (userExistCheck == null) {
             log.error("Ошибка! Пользователя с id " + userDao.getId() + " не существует!");
             throw new ObjectNotFoundException("Пользователь", userDao.getId());
         }
 
         User userToUpdate = userDaoToUserTransformer.transformFrom(userDao);
-        if(emailExists(userToUpdate.getEmail())) {
+        if (emailExists(userToUpdate.getEmail())) {
             log.error("Ошибка! Пользователь с email '{}' уже существует!", userToUpdate.getEmail());
             throw new RuntimeException("Ошибка! Пользователь с таким email уже существует!");
         }
@@ -56,7 +56,7 @@ public class UserService {
 
     public User getById(long id) {
         User user = userStorage.getById(id);
-        if(user == null) {
+        if (user == null) {
             log.error("Пользователь с id '{}' не найден", id);
             throw new ObjectNotFoundException("Пользователь", id);
         }
@@ -71,7 +71,7 @@ public class UserService {
 
     public User delete(long id) {
         User userExistCheck = userStorage.delete(id);
-        if(userExistCheck == null) {
+        if (userExistCheck == null) {
             log.error("Пользователь с id '{}' не найден", id);
             throw new ObjectNotFoundException("Пользователь", id);
         }
@@ -80,18 +80,18 @@ public class UserService {
     }
 
     public void addFriend(long userId, long friendId) {
-        if(userId == friendId) {
+        if (userId == friendId) {
             log.error("Ваш id '{}', id друга - '{}'. Добавление самого себя в друзья невозможно", userId, friendId);
             throw new RuntimeException("Пользователь не может добавить в друзья сам себя");
         }
 
         User user = userStorage.getById(userId);
         User friend = userStorage.getById(friendId);
-        if(user == null) {
+        if (user == null) {
             log.error("Пользователь с id '{}' не существует", userId);
             throw new ObjectNotFoundException("Пользователь", userId);
         }
-        if(friend == null) {
+        if (friend == null) {
             log.error("Пользователь с id '{}' не существует", friendId);
             throw new ObjectNotFoundException("Пользователь", friendId);
         }
@@ -101,17 +101,17 @@ public class UserService {
     }
 
     public void deleteFriend(long userId, long friendId) {
-        if(userId == friendId) {
+        if (userId == friendId) {
             log.error("Ваш id '{}', id друга - '{}'. Удаление самого себя из друзей невозможно", userId, friendId);
             throw new RuntimeException("Пользователь не может удалить из друзей самого себя. Придётся терпеть :)");
         }
         User user = userStorage.getById(userId);
         User friend = userStorage.getById(friendId);
-        if(user == null) {
+        if (user == null) {
             log.error("Пользователь с id '{}' не существует", userId);
             throw new ObjectNotFoundException("Пользователь", userId);
         }
-        if(friend == null) {
+        if (friend == null) {
             log.error("Пользователь с id '{}' не существует", friendId);
             throw new ObjectNotFoundException("Пользователь", friendId);
         }
@@ -122,7 +122,7 @@ public class UserService {
 
     public List<User> getFriends(long id) {
         User user = userStorage.getById(id);
-        if(user == null) {
+        if (user == null) {
             log.error("Пользователь с id '{}' не существует", id);
             throw new ObjectNotFoundException("Пользователь", id);
         }
@@ -133,11 +133,11 @@ public class UserService {
     public List<User> getCommonFriends(long userId, long anotherUserId) {
         User user = userStorage.getById(userId);
         User anotherUser = userStorage.getById(anotherUserId);
-        if(user == null) {
+        if (user == null) {
             log.error("Пользователь с id '{}' не существует", userId);
             throw new ObjectNotFoundException("Пользователь", userId);
         }
-        if(anotherUser == null) {
+        if (anotherUser == null) {
             log.error("Пользователь с id '{}' не существует", anotherUserId);
             throw new ObjectNotFoundException("Пользователь", anotherUserId);
         }

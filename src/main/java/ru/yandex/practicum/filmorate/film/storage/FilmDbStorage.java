@@ -74,7 +74,7 @@ public class FilmDbStorage implements FilmStorage{
     @Override
     public Film delete(long id) {
         Film filmToDelete = getById(id);
-        if(filmToDelete == null) {
+        if (filmToDelete == null) {
             log.info("Запрос на удаление фильма не выполнен. Фильм с id '{}' отсутствует", id);
             return null;
         }
@@ -112,7 +112,7 @@ public class FilmDbStorage implements FilmStorage{
     }
 
     private void checkFilmGenres(List<Genre> genres, long filmId) {
-        if(genres == null) {
+        if (genres == null) {
             return;
         }
         List<Integer> genreIds = genres.stream().map(Genre::getId).distinct().collect(Collectors.toList());

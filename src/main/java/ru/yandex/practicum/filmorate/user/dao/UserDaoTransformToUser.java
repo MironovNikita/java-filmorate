@@ -9,7 +9,7 @@ public class UserDaoTransformToUser implements Mapper<UserDao, User> {
     @Override
     public User transformFrom(UserDao userDao) {
         String name;
-        if(userDao.getName() == null || userDao.getName().isBlank()) {
+        if (userDao.getName() == null || userDao.getName().isBlank()) {
             name = userDao.getLogin();
         } else {
             name = userDao.getName();

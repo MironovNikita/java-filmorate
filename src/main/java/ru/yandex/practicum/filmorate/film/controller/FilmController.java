@@ -48,7 +48,7 @@ public class FilmController {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Film getFilm(@PathVariable Optional<Long> id) {
-        if(id.isPresent()) {
+        if (id.isPresent()) {
             long correctId = id.get();
             log.info("Выполнение команды контроллера на получение фильма по id '{}'", correctId);
             return filmService.getById(correctId);
@@ -60,8 +60,8 @@ public class FilmController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Film deleteFilm(@PathVariable Optional <Long> id) {
-        if(id.isPresent()) {
+    public Film deleteFilm(@PathVariable Optional<Long> id) {
+        if (id.isPresent()) {
             long correctId = id.get();
             log.info("Выполнение команды контроллера на удаление фильма по id '{}'", correctId);
             return filmService.delete(correctId);
@@ -73,8 +73,8 @@ public class FilmController {
 
     @GetMapping("/popular")
     @ResponseStatus(HttpStatus.OK)
-    public List<Film> getMostLikedFilms(@RequestParam(defaultValue = "10") Optional <Integer> count) {
-        if(count.isPresent()) {
+    public List<Film> getMostLikedFilms(@RequestParam(defaultValue = "10") Optional<Integer> count) {
+        if (count.isPresent()) {
             int correctCount = count.get();
             log.info("Запрошен список фильмов с наибольшим количеством лайков");
             return filmService.getMostLikedFilms(correctCount);
@@ -86,8 +86,8 @@ public class FilmController {
 
     @PutMapping("/{id}/like/{userId}")
     @ResponseStatus(HttpStatus.OK)
-    public void putLikeToFilm(@PathVariable("id") Optional <Long> filmId, @PathVariable Optional <Long> userId) {
-        if(filmId.isPresent() && userId.isPresent()) {
+    public void putLikeToFilm(@PathVariable("id") Optional<Long> filmId, @PathVariable Optional<Long> userId) {
+        if (filmId.isPresent() && userId.isPresent()) {
             long correctFilmId = filmId.get();
             long correctUserId = userId.get();
             log.info("Фильму с id '{}' был поставлен лайк пользователем с id '{}'", correctFilmId, correctUserId);
@@ -100,8 +100,8 @@ public class FilmController {
 
     @DeleteMapping("/{id}/like/{userId}")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteLikeFromFilm(@PathVariable("id") Optional <Long> filmId, @PathVariable Optional <Long> userId) {
-        if(filmId.isPresent() && userId.isPresent()) {
+    public void deleteLikeFromFilm(@PathVariable("id") Optional<Long> filmId, @PathVariable Optional<Long> userId) {
+        if (filmId.isPresent() && userId.isPresent()) {
             long correctFilmId = filmId.get();
             long correctUserId = userId.get();
             log.info("У фильма с id '{}' был убран лайк пользователем с id '{}'", correctFilmId, correctUserId);

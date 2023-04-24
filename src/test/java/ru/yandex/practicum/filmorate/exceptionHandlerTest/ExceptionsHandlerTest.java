@@ -45,7 +45,7 @@ public class ExceptionsHandlerTest {
                 LocalDate.of(2000, 6, 18),
                 106,
                 new Mpa(3, "PG-13"),
-                Collections.emptyList()
+                new LinkedHashSet<>()
         );
     }
 

@@ -85,35 +85,6 @@ public class UserDbStorage implements UserStorage {
         return userToDelete;
     }
 
-    @Override
-    public List<User> getFriends(long id) {
-        log.info("Запрошен список друзей пользователя с id '{}'", id);
-        return jdbcTemplate.query(UserRequests.GET_FRIENDS, this::userMapping, id);
-    }
-
-    @Override
-    public List<User> getCommonFriends(long userId, long anotherUserId) {
-        log.info("Запрошен список общих друзей пользователей с id '{}' и с id '{}'", userId, anotherUserId);
-        return jdbcTemplate.query(UserRequests.GET_COMMON_FRIENDS, this::userMapping, userId, anotherUserId);
-    }
-
-    @Override
-    public void addFriend(long userId, long friendId) {
-        log.info("Запрос на добавление в друзья пользователей с id '{}' и с id '{}'", userId, friendId);
-        SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate).withTableName("friendship");
-        Map<String, Object> userTable = new HashMap<>();
-        userTable.put("user_id", userId);
-        userTable.put("friend_id", friendId);
-
-        simpleJdbcInsert.execute(userTable);
-    }
-
-    @Override
-    public void deleteFriend(long userId, long friendId) {
-        log.info("Запрос на удаление из друзей пользователей с id '{}' и с id '{}'", userId, friendId);
-        jdbcTemplate.update(UserRequests.DELETE_FRIEND, userId, friendId);
-    }
-
     private User userMapping(ResultSet resultSet, int rowNumber) throws SQLException {
         return new User(resultSet.getLong("user_id"),
                 resultSet.getString("email"),

@@ -9,6 +9,7 @@ import ru.yandex.practicum.filmorate.genre.model.Genre;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 @Slf4j
@@ -35,10 +36,11 @@ public class GenreDbStorage implements GenreStorage {
     }
 
     @Override
-    public List<Genre> getAllGenresByFilmId(long filmId) {
+    public LinkedHashSet<Genre> getAllGenresByFilmId(long filmId) {
         try {
             log.info("Запрошен список всех жанров фильма с id '{}'", filmId);
-            return jdbcTemplate.query(GenreRequests.GET_ALL_GENRES_BY_FILM_ID, this::genreMapping, filmId);
+            return new LinkedHashSet<>(jdbcTemplate.query(GenreRequests.GET_ALL_GENRES_BY_FILM_ID, this::genreMapping,
+                    filmId));
         } catch (DataAccessException exception) {
             log.warn("Жанры для фильма с Id '{}' не найдены", filmId);
             return null;

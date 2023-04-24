@@ -11,8 +11,6 @@ import ru.yandex.practicum.filmorate.film.storage.FilmStorage;
 import ru.yandex.practicum.filmorate.genre.storage.GenreStorage;
 import ru.yandex.practicum.filmorate.mpa.model.Mpa;
 import ru.yandex.practicum.filmorate.mpa.storage.MpaStorage;
-import ru.yandex.practicum.filmorate.user.model.User;
-import ru.yandex.practicum.filmorate.user.storage.UserStorage;
 
 import java.util.List;
 
@@ -21,18 +19,15 @@ import java.util.List;
 @Service
 public class FilmService {
     private final FilmStorage filmStorage;
-    private final UserStorage userStorage;
     private final GenreStorage genreStorage;
     private final MpaStorage mpaStorage;
     private final Mapper<FilmDao, Film> filmDaoToFilmTransformer;
 
     public FilmService(@Qualifier("filmDbStorage") FilmStorage filmStorage,
-                       @Qualifier("userDbStorage") UserStorage userStorage,
                        GenreStorage genreStorage,
                        MpaStorage mpaStorage,
                        Mapper<FilmDao, Film> filmDaoToFilmTransformer) {
         this.filmStorage = filmStorage;
-        this.userStorage = userStorage;
         this.genreStorage = genreStorage;
         this.mpaStorage = mpaStorage;
         this.filmDaoToFilmTransformer = filmDaoToFilmTransformer;
@@ -102,42 +97,5 @@ public class FilmService {
         }
         log.info("Команда сервиса на удаление фильма с id '{}' была успешно выполнена", id);
         return film;
-    }
-
-    public void likeFilm(long filmId, long userId) {
-        Film film = filmStorage.getById(filmId);
-        User user = userStorage.getById(userId);
-        if (film == null) {
-            log.error("Фильм с id '{}' не найден", filmId);
-            throw new ObjectNotFoundException("Фильм", filmId);
-        }
-        if (user == null) {
-            log.error("Пользователь с id '{}' не найден", userId);
-            throw new ObjectNotFoundException("Пользователь", userId);
-        }
-        log.info("Команда сервиса на постановку лайка фильму с id '{}' от пользователя с id '{}' была успешно" +
-                "выполнена", filmId, userId);
-        filmStorage.likeFilm(filmId, userId);
-    }
-
-    public void deleteLikeFromFilm(long filmId, long userId) {
-        Film film = filmStorage.getById(filmId);
-        User user = userStorage.getById(userId);
-        if (film == null) {
-            log.error("Фильм с id '{}' не найден", filmId);
-            throw new ObjectNotFoundException("Фильм", filmId);
-        }
-        if (user == null) {
-            log.error("Пользователь с id '{}' не найден", userId);
-            throw new ObjectNotFoundException("Пользователь", userId);
-        }
-        log.info("Команда сервиса на постановку лайка фильму с id '{}' от пользователя с id '{}' была успешно" +
-                "выполнена", filmId, userId);
-        filmStorage.deleteLikeFromFilm(filmId, userId);
-    }
-
-    public List<Film> getMostLikedFilms(int quantity) {
-        log.info("Команда сервиса на запрос самых популярных фильмов успешно выполнена");
-        return filmStorage.getMostLikedFilms(quantity);
     }
 }

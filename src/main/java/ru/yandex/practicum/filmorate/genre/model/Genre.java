@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class Genre {
-    int id;
-    String name;
+    private int id;
+    private String name;
 }

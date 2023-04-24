@@ -17,7 +17,6 @@ import java.util.List;
 public class MpaDbStorage implements MpaStorage {
     private final JdbcTemplate jdbcTemplate;
 
-
     @Override
     public Mpa getById(int id) {
         try {
@@ -27,7 +26,6 @@ public class MpaDbStorage implements MpaStorage {
             log.warn("Жанр с Id '{}' не найден", id);
             return null;
         }
-
     }
 
     @Override

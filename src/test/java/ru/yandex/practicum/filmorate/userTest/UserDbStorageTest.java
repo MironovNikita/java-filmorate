@@ -160,67 +160,6 @@ public class UserDbStorageTest {
         assertThat(userDbStorage.getAll().size()).isEqualTo(2);
     }
 
-    @DisplayName("Проверка добавления друга и получения списка всех друзей")
-    @Test
-    void shouldAddFriendById() {
-        User user1 = createTestUser(1);
-        User user2 = createTestUser(2).withName("Name2").withEmail("test2@yandex.ru").withLogin("Login2");
-        User user3 = createTestUser(3).withName("Name3").withEmail("test3@yandex.ru").withLogin("Login3");
-
-        userDbStorage.create(user1);
-        userDbStorage.create(user2);
-        userDbStorage.create(user3);
-
-        userDbStorage.addFriend(user1.getId(), user2.getId());
-        userDbStorage.addFriend(user1.getId(), user3.getId());
-        List<User> user1CheckFriendList = List.of(user2, user3);
-
-        Assertions.assertEquals(user1CheckFriendList, userDbStorage.getFriends(user1.getId()));
-    }
-
-    @DisplayName("Проверка получения списка общих друзей")
-    @Test
-    void shouldReturnCommonFriendList() {
-        User user1 = createTestUser(1);
-        User user2 = createTestUser(2).withName("Name2").withEmail("test2@yandex.ru").withLogin("Login2");
-        User user3 = createTestUser(3).withName("Name3").withEmail("test3@yandex.ru").withLogin("Login3");
-        User user4 = createTestUser(4).withName("Name4").withEmail("test4@yandex.ru").withLogin("Login4");
-
-        userDbStorage.create(user1);
-        userDbStorage.create(user2);
-        userDbStorage.create(user3);
-        userDbStorage.create(user4);
-
-        userDbStorage.addFriend(user1.getId(), user3.getId());
-        userDbStorage.addFriend(user1.getId(), user4.getId());
-        userDbStorage.addFriend(user2.getId(), user3.getId());
-        userDbStorage.addFriend(user2.getId(), user4.getId());
-        List<User> user1And2CheckCommonFriendList = List.of(user3, user4);
-
-        Assertions.assertEquals(user1And2CheckCommonFriendList,
-                userDbStorage.getCommonFriends(user1.getId(), user2.getId()));
-    }
-
-    @DisplayName("Проверка удаления друга")
-    @Test
-    void shouldDeleteFriendById() {
-        User user1 = createTestUser(1);
-        User user2 = createTestUser(2).withName("Name2").withEmail("test2@yandex.ru").withLogin("Login2");
-        User user3 = createTestUser(3).withName("Name3").withEmail("test3@yandex.ru").withLogin("Login3");
-
-        userDbStorage.create(user1);
-        userDbStorage.create(user2);
-        userDbStorage.create(user3);
-
-        userDbStorage.addFriend(user1.getId(), user2.getId());
-        userDbStorage.addFriend(user1.getId(), user3.getId());
-
-        List<User> user1CheckFriendList = List.of(user3);
-        userDbStorage.deleteFriend(user1.getId(), user2.getId());
-
-        Assertions.assertEquals(user1CheckFriendList, userDbStorage.getFriends(user1.getId()));
-    }
-
     private User createTestUser(long id) {
         return new User(
                 id,

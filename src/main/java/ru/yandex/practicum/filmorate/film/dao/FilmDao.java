@@ -6,7 +6,7 @@ import ru.yandex.practicum.filmorate.mpa.model.Mpa;
 
 import javax.validation.constraints.*;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.LinkedHashSet;
 
 @EqualsAndHashCode
 @With
@@ -26,6 +26,6 @@ public class FilmDao {
     @Positive
     private Integer duration;
     @NotNull
-    Mpa mpa;
-    List<Genre> genres;
+    private Mpa mpa;
+    private LinkedHashSet<Genre> genres;
 }

@@ -83,24 +83,6 @@ public class FilmDbStorage implements FilmStorage {
         return filmToDelete;
     }
 
-    @Override
-    public List<Film> getMostLikedFilms(int quantity) {
-        log.info("Запрошен список фильмов с наибольшим количеством лайков");
-        return jdbcTemplate.query(FilmRequests.GET_MOST_LIKED_FILMS, this::filmMapping, Math.max(quantity, 0));
-    }
-
-    @Override
-    public void likeFilm(long filmId, long userId) {
-        log.info("Запрос поставить лайк фильму с id '{}' пользователем с id '{}'", filmId, userId);
-        jdbcTemplate.update(FilmRequests.LIKE_FILM, filmId, userId);
-    }
-
-    @Override
-    public void deleteLikeFromFilm(long filmId, long userId) {
-        log.info("Запрос убрать лайк фильма с id '{}' пользователем с id '{}'", filmId, userId);
-        jdbcTemplate.update(FilmRequests.DELETE_LIKE_FROM_FILM, filmId, userId);
-    }
-
     private Film filmMapping(ResultSet resultSet, int rowNumber) throws SQLException {
         return new Film(resultSet.getLong("film_id"),
                 resultSet.getString("film.name"),
@@ -111,7 +93,7 @@ public class FilmDbStorage implements FilmStorage {
                 genreStorage.getAllGenresByFilmId(resultSet.getInt("film_id")));
     }
 
-    private void checkFilmGenres(List<Genre> genres, long filmId) {
+    private void checkFilmGenres(LinkedHashSet<Genre> genres, long filmId) {
         if (genres == null) {
             return;
         }

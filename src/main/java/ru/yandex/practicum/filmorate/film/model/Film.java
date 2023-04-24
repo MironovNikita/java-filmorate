@@ -6,7 +6,7 @@ import ru.yandex.practicum.filmorate.genre.model.Genre;
 import ru.yandex.practicum.filmorate.mpa.model.Mpa;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.LinkedHashSet;
 
 @With
 @Value
@@ -17,5 +17,5 @@ public class Film {
     LocalDate releaseDate;
     Integer duration;
     Mpa mpa;
-    List<Genre> genres;
+    LinkedHashSet<Genre> genres;
 }

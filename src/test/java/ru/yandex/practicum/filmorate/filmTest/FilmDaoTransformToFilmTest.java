@@ -10,6 +10,7 @@ import ru.yandex.practicum.filmorate.mpa.model.Mpa;
 
 import java.time.LocalDate;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 
 public class FilmDaoTransformToFilmTest {
     private final FilmDaoTransformToFilm filmDaoTransformToFilm = new FilmDaoTransformToFilm();
@@ -24,7 +25,7 @@ public class FilmDaoTransformToFilmTest {
                 LocalDate.of(2000, 6, 18),
                 106,
                 new Mpa(3, "PG-13"),
-                Collections.emptyList()
+                new LinkedHashSet<>()
         );
 
         Film film = filmDaoTransformToFilm.transformFrom(filmDao);

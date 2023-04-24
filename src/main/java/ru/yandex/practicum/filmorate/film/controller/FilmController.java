@@ -9,6 +9,7 @@ import ru.yandex.practicum.filmorate.common.exception.IncorrectPathDataException
 import ru.yandex.practicum.filmorate.film.dao.FilmDao;
 import ru.yandex.practicum.filmorate.film.service.FilmService;
 import ru.yandex.practicum.filmorate.film.model.Film;
+import ru.yandex.practicum.filmorate.like.service.LikeService;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
@@ -21,6 +22,8 @@ import java.util.Optional;
 @RequestMapping("/films")
 public class FilmController {
     private final FilmService filmService;
+
+    private final LikeService likeService;
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
@@ -77,7 +80,7 @@ public class FilmController {
         if (count.isPresent()) {
             int correctCount = count.get();
             log.info("Запрошен список фильмов с наибольшим количеством лайков");
-            return filmService.getMostLikedFilms(correctCount);
+            return likeService.getMostLikedFilms(correctCount);
         } else {
             log.warn("Передано некорректное количество фильмов");
             throw new IncorrectPathDataException("Передано некорректное количество фильмов");
@@ -91,7 +94,7 @@ public class FilmController {
             long correctFilmId = filmId.get();
             long correctUserId = userId.get();
             log.info("Фильму с id '{}' был поставлен лайк пользователем с id '{}'", correctFilmId, correctUserId);
-            filmService.likeFilm(correctFilmId, correctUserId);
+            likeService.likeFilm(correctFilmId, correctUserId);
         } else {
             log.warn("Некорректные данные по id. Проверьте id фильма и пользователя.");
             throw new IncorrectPathDataException("Проверьте id фильма и пользователя. Данные некорректны.");
@@ -105,7 +108,7 @@ public class FilmController {
             long correctFilmId = filmId.get();
             long correctUserId = userId.get();
             log.info("У фильма с id '{}' был убран лайк пользователем с id '{}'", correctFilmId, correctUserId);
-            filmService.deleteLikeFromFilm(correctFilmId, correctUserId);
+            likeService.deleteLikeFromFilm(correctFilmId, correctUserId);
         } else {
             log.warn("Некорректные данные по id. Проверьте id фильма и пользователя.");
             throw new IncorrectPathDataException("Проверьте id фильма и пользователя. Данные некорректны.");

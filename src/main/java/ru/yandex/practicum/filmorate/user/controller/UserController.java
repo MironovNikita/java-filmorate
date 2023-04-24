@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.filmorate.common.exception.IncorrectPathDataException;
+import ru.yandex.practicum.filmorate.friend.service.FriendService;
 import ru.yandex.practicum.filmorate.user.dao.UserDao;
 import ru.yandex.practicum.filmorate.user.service.UserService;
 import ru.yandex.practicum.filmorate.user.model.User;
@@ -18,6 +19,7 @@ import java.util.*;
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
+    private final FriendService friendService;
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
@@ -74,7 +76,7 @@ public class UserController {
             long correctUserId = userId.get();
             log.info("Выполнение команды контроллера на добавление в друзья пользователей с id '{}' и '{}'",
                     correctUserId, correctFriendId);
-            userService.addFriend(correctUserId, correctFriendId);
+            friendService.addFriend(correctUserId, correctFriendId);
         } else {
             log.warn("Проверьте запрос. Некорректный id пользователя.");
             throw new IncorrectPathDataException("Проверьте запрос. Некорректный id пользователя.");
@@ -89,7 +91,7 @@ public class UserController {
             long correctUserId = userId.get();
             log.info("Выполнение команды контроллера на удаление из друзей пользователей с id '{}' и '{}'",
                     correctUserId, correctFriendId);
-            userService.deleteFriend(correctUserId, correctFriendId);
+            friendService.deleteFriend(correctUserId, correctFriendId);
         } else {
             log.warn("Проверьте запрос. Некорректный id пользователя.");
             throw new IncorrectPathDataException("Проверьте запрос. Некорректный id пользователя.");
@@ -102,7 +104,7 @@ public class UserController {
         if (userId.isPresent()) {
             long correctId = userId.get();
             log.info("Выполнение команды контроллера на получение списка друзей пользователя с id '{}'", correctId);
-            return userService.getFriends(correctId);
+            return friendService.getFriends(correctId);
         } else {
             log.warn("Список друзей не обнаружен. Некорректный id пользователя.");
             throw new IncorrectPathDataException("Список друзей не обнаружен. Некорректный id пользователя.");
@@ -118,7 +120,7 @@ public class UserController {
             long correctUserId = userId.get();
             log.info("Выполнение команды контроллера на получение общих друзей пользователей с id '{}' и '{}'",
                     correctUserId, correctOtherId);
-            return userService.getCommonFriends(correctUserId, correctOtherId);
+            return friendService.getCommonFriends(correctUserId, correctOtherId);
         } else {
             log.warn("Проверьте запрос. Некорректный id пользователя.");
             throw new IncorrectPathDataException("Проверьте запрос. Некорректный id пользователя.");

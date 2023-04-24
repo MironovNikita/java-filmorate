@@ -9,7 +9,6 @@ import ru.yandex.practicum.filmorate.film.model.Film;
 import ru.yandex.practicum.filmorate.mpa.model.Mpa;
 
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.LinkedHashSet;
 
 public class FilmDaoTransformToFilmTest {

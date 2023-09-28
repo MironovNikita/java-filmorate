@@ -1,38 +1,23 @@
-<br/>
+
+
 <p align="center">
-  <a href="https://github.com/MironovNikita/Java-Filmorate">
-    <img src="https://media.tenor.com/XzYfLz7enPQAAAAi/five-star-movie-movie-review.gif" alt="Logo" height=160 width=160></img>
-  </a>
 
-  <h2 align="center">Filmorate</h2>
+  <img width="160" height="160" src="https://media.tenor.com/XzYfLz7enPQAAAAi/five-star-movie-movie-review.gif">
+
 </p>
-  <p align="center">
-    An awesome Filmorate app will allow you to make your own rating of films and add friends to discuss and exchange your favourite films with them!
-    <br/>
-    <br/>
-    <a href="https://github.com/MironovNikita/Java-Filmorate"><strong>Explore the docs »</strong></a>
-    <br/>
-    <br/>
-    <a href="https://github.com/MironovNikita/Java-Filmorate">View Demo</a>
-    .
-    <a href="https://github.com/MironovNikita/Java-Filmorate/issues">Report Bug</a>
-    .
-    <a href="https://github.com/MironovNikita/Java-Filmorate/issues">Request Feature</a>
-  </p>
 
+# Filmorate
 
-## App database diagram
+Потрясающее приложение Filmorate позволит вам составить свой собственный рейтинг фильмов и добавлять друзей, чтобы обсуждать с ними ваши любимые фильмы и обмениваться ими!
+
+### Описание
+Приложение даёт возможность составлять рейтинг для фильмов. У них присутствуют не только жанры, но и возрастной рейтинг, продолжительность, дата релиза, описание и др. Пользователи могут добавлять друг друга в друзья, смотреть список общих друзей, ставить лайки фильмам. Также реализована возможность вывести топ самых популярных фильмов по количеству лайков.
+
+## Диаграмма базы данных
 
 ![Filmorate database scheme](https://github.com/MironovNikita/java-filmorate/blob/main/Filmorate%20database%20scheme.png?raw=true)
 
-I make this project while studying at Yandex Practicum on the Java Developer course. This project will allow users to make their own top movies, mark their favorite movies, add other users as friends, and also share their favorite movies with them!
-
-## Built With
-- `Spring Boot`
-- `Maven`
-- `Lombok`
-
-# Filmorate endpoints
+# Эндпоинты
 
 ### Users
 - `[POST] /users` - create a new user
@@ -55,6 +40,32 @@ I make this project while studying at Yandex Practicum on the Java Developer cou
 - `[DELETE] /films/{id}` - delete film with `id`
 - `[DELETE] /films/{id}/like/{userId}` - delete like from user with `userId` to the film with `id` :c
 
-## Authors
 
-* **Mironov Nikita** - *Yandex Practicum Student* - [Mironov Nikita](https://github.com/MironovNikita/) - *Java App student (developer)*
+## Скриншоты
+**Пример логирования работы программы**
+![Логирование](https://github.com/MironovNikita/java-filmorate/blob/main/screenshots/scr1.png?raw=true)
+
+**Тестовая таблица пользователей**
+![Пользователи](https://github.com/MironovNikita/java-filmorate/blob/main/screenshots/scr4.png?raw=true)
+
+**Тестовая таблица фильмов**
+![Фильмы](https://github.com/MironovNikita/java-filmorate/blob/main/screenshots/scr2.png?raw=true)
+
+**Тестовая таблица дружбы пользователей**
+![Дружба](https://github.com/MironovNikita/java-filmorate/blob/main/screenshots/scr3.png?raw=true)
+## 🚀 Обо мне
+Я разрабатывал данный проект на языке Java 11 в рамках курса Яндекс.Практикум "Java-Разработчик". Данный проект мне понравился, достаточно приближен к реальному, а также позволил потренироваться в работе с базами данных.
+
+
+
+
+## 🛠 Применяемые технологии
+- `Spring Boot`
+- `Maven`
+- `Lombok`
+
+
+## Автор
+
+- [@MironovNikita](https://github.com/MironovNikita)
+
